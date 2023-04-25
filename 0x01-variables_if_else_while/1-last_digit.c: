@@ -1,0 +1,9 @@
+st_digit.c:29:2: error: expected expression before ‘}’ token
+   29 |  }
+      |  ^
+1-last_digit.c:28:46: error: expected ‘;’ before ‘}’ token
+   28 |   printf("Last digit of %d is %d and is 0\n",
+      |                                              ^
+      |                                              ;
+   29 |  }
+      |  ~                                       
