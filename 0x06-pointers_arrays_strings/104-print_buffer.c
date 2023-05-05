@@ -1,35 +1,63 @@
+#include "main.h"
 #include <stdio.h>
 
-#define BUFFER_SIZE 10
+/**
+ * print_buffer - prints the content of a buffer
+ * @b: the buffer to be printed
+ * @size: the size of the buffer
+ *
+ * Return: void
+ */
+void print_buffer(char *b, int size)
+{
+	int i, j;
 
-void print_buffer(const char *buffer, size_t size) {
-       	size_t i;
-
-	for (i = 0; i < size; i += BUFFER_SIZE) {
-		size_t j;
-		printf("%08zx: ", i);
-		for (j = i; j < i + BUFFER_SIZE; j++) {
-		       	if (j < size) {
-     printf("%02x", buffer[j]);
-            } else {
-                printf("  ");
-            }
-
-            if (j % BUFFER_SIZE == BUFFER_SIZE / 2 - 1) {
-                printf(" ");
-            }
-        }
-
-        printf(" ");
-
-        for (j = i; j < i + BUFFER_SIZE && j < size; j++) {
-            if (buffer[j] >= 32 && buffer[j] <= 126) {
-                printf("%c", buffer[j]);
-            } else {
-                printf(".");
-            }
-        }
-
-        printf("\n");
-    }
+	if (size <= 0)
+	{
+		printf("\n");
+		return;
+	}
+	for (i = 0; i < size; i += 10)
+	{
+		printf("%08x: ", i);
+		for (j = i; j < i + 10; j += 2)
+		{
+			if (j < size)
+			{
+				printf("%02x", b[j] & 0xff);
+			}
+			else
+			{
+				printf("  ");
+			}
+			if (j + 1 < size)
+			{
+				printf("%02x ", b[j + 1] & 0xff);
+			}
+			else
+			{
+				printf("   ");
+			}
+		}
+		printf(" ");
+		for (j = i; j < i + 10; j++)
+		{
+			if (j < size)
+			{
+				if (b[j] >= ' ' && b[j] <= '~')
+				{
+					printf("%c", b[j]);
+				}
+				else
+				{
+					printf(".");
+				}
+			}
+			else
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
 }
