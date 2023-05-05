@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * main - prints a[2] = 98, followed by a new line.
+ * Return: Always 0.
  */
 int main(void)
 {
-	int a[5] = {98, 102, 108, 115, 121};
+	int a[5];
 	int *p;
 
-	p = &a[2];
-	*(p + 1) = 98;
-	printf("a[2] = %d\n", *(p));
+	a[2] = 1024;
+	p = &a[2] - 1;
+	*(p + 5) = 98;
+	printf("a[2] = %d\n", a[2]);
 	return (0);
 }
